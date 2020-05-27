@@ -25,7 +25,9 @@
                 <div class="card" id="Organizations List">
                   <h5 class="card-title" style='text-align:center;margin-top:8px'>Your Organizations</h5>
                     <div class="card-body">
-                  </div>
+                        <ul class="list-group align-middle" id="org_list">
+                        </ul>
+                    </div>
                 </div>
                <div class="card" id="system-preferences">
                   <h5 class="card-title" style='text-align:center;margin-top:8px'>Pending Change Requests</h5>
@@ -39,4 +41,13 @@
 {% endblock %}
 {% block extra_body %}
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="{% static 'staff_portal/organizations_card.js' %}"></script>
+    <script>
+        function main(){
+            populate_organizations($('#org_list'))
+        }
+
+        $(window).ready(main)
+
+    </script>
 {% endblock %}
