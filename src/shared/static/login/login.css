@@ -1,0 +1,17 @@
+body {
+ height: 100vh;
+ display: flex;
+ flex-direction: column
+}
+.container{
+    margin:auto
+}
+.login{
+    margin: auto;
+    background: #1459a9;
+    border-radius: 10px;
+    padding: 30px
+}
+.sign_in_message {
+    margin: auto;
+}
