@@ -14,16 +14,45 @@
                 <h3>Calibrate</h3>
                 <div class="card">
                   <div class="card-body">
-                    This is some text within a card body.
+                    Progress Bar will go here.
                   </div>
                 </div>
-               <div class="card">
-                  <div class="card-body">
-                    This is some text within a card body.
+               <div class="card" id="system-preferences">
+                  <div class="card-body row">
+
                   </div>
                 </div>
             </div>
         </div>
 
     </div>
+{% endblock %}
+{% block extra_body %}
+    <script src="{% static 'client_portal/item_card.js'%}"></script>
+    <script>
+        preferences = [{
+                            name: "Recyclables",
+                            color: "red"
+                        },
+                        {
+                            name: "Paper",
+                            color: "yellow"
+                        },
+                        {
+                            name: "Landfill",
+                            color: "black"
+                        },
+                        {
+                            name: "Compost",
+                            color: "green"
+                        }]
+        preferences.forEach(elem => {
+            id = "preference_box_" + elem.name
+            $("#system-preferences").children(".card-body").append(`
+                <div class='col-3' id='${id}'></div>
+            `).css("text-align","center")
+            itemCard($("<div></div>").appendTo(`#${id}`),10,elem.color)
+            $(`#${id}`).append(`<h5>${elem.name}</h5>`)
+        })
+    </script>
 {% endblock %}
