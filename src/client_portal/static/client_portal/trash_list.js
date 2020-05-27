@@ -36,7 +36,7 @@ function trash_list(list_container, list) {
 }
 
 function update_trash_state_client(state) {
-	$('.trash-group').each((e, i) => {
-		console.log(e, i);
+	$('.trash-group').each((i, elem) => {
+		console.log($(elem));
 	});
 }

@@ -9,7 +9,7 @@ function itemCard(selector, itemCount = 0, color = 'red') {
 		'text-align': 'center',
 		margin: 'auto',
 	});
-	$(selector).html(`${itemCount}<br>Items`);
+	$(selector).html(`<h5>${itemCount}<br>Items</h5>`);
 }
 
 function get_trash(callback = console.log) {
@@ -18,3 +18,5 @@ function get_trash(callback = console.log) {
 		success: callback,
 	});
 }
+
+function updateItemCounts(state) {}
