@@ -19,4 +19,4 @@ class PortalControlView(LoginRequiredMixin, RedirectView):
             return '/clients'
         if hasattr(user, 'clientmanager'):
             return '/staff'
-        return "/error"
+        return "/admin"

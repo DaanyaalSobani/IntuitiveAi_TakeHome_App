@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 from django.contrib.auth.models import User
 from client_portal.models import Organization, WasteManager
@@ -10,7 +11,12 @@ class ChangeRequest(models.Model):
     change_request_JSON = models.TextField()
     status = models.CharField(max_length=1, choices=(("P", "Pending"), ("C", "Closes")))
     created_date = models.DateTimeField(auto_now_add=True)
-    closed_date = models.DateTimeField(null=True)
+    closed_date = models.DateTimeField(null=True,blank=True)
+
+    def __str__(self):
+        return self.organization.name \
+               + "-" + self.wastemanager.user.first_name\
+               + "-" + str(self.created_date)[:10]
 
 
 class ClientManager(models.Model):

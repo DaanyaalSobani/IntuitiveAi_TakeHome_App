@@ -5,4 +5,5 @@ from . import apis
 urlpatterns = [
     path('', views.IndexView.as_view()),
     path('api/organizations', apis.organizations_info),
+    path('api/pending_changes', apis.pending_changes),
 ]

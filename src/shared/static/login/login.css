@@ -12,6 +12,7 @@ body {
     border-radius: 10px;
     padding: 30px;
     color: white;
+    width: 40%;
 }
 .sign_in_message {
     margin: auto;
