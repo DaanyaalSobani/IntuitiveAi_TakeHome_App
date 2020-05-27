@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import WasteManager, Organization
+
+admin.site.register(WasteManager)
+admin.site.register(Organization)

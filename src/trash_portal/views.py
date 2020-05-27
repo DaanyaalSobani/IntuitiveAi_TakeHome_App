@@ -14,10 +14,11 @@ class PortalControlView(LoginRequiredMixin, RedirectView):
     login_url = '/accounts/login'
 
     def get_redirect_url(self, *args, **kwargs):
-        print(dir(self.request.user))
-        if True:
-            return '/test'
-        else:
-            return '/testFalse'
+        user = self.request.user
+        if hasattr(user, 'wastemanager'):
+            return '/clients'
+        if hasattr(user, 'clientmanager'):
+            return '/staff'
+        return "/error"
 
 
