@@ -49,7 +49,10 @@ function update_trash_state_client() {
 			.children()
 			.each((i, child) => {
 				data = $(child).data()?.trash_data;
-				if (data) state[preference].push(data);
+				if (data) {
+					data.type = type_name_to_code(preference);
+					state[preference].push(data);
+				}
 			});
 	});
 	trash_state_updated();

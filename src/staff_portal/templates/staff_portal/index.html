@@ -1,0 +1,42 @@
+{% extends 'client_portal/base.html' %}
+{% block head_title %}Client Portal{% endblock %}
+{% block extra_head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'staff_portal/style.css' %}">
+{% endblock %}
+{%block content %}
+        <div class="container" id="main-container">
+        <div class="row">
+            <div class="col-3" id="left-panel" style='padding:0px'>
+                <div class="list-group" id="list-tab" role="tablist">
+                     <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+                </div>
+            </div>
+            <div class="col-9" id="right-panel">
+                <div style='display: inline-grid;
+                            margin: 5px 0px 0px 0px;
+                            width: 100%;'>
+                    <h3 style='grid-column:1 span 2;margin:0px'>Staff Portal</h3>
+
+                </div>
+                <div class="card" id="Organizations List">
+                  <h5 class="card-title" style='text-align:center;margin-top:8px'>Your Organizations</h5>
+                    <div class="card-body">
+                  </div>
+                </div>
+               <div class="card" id="system-preferences">
+                  <h5 class="card-title" style='text-align:center;margin-top:8px'>Pending Change Requests</h5>
+                  <div class="card-body row d-flex flex-row" style='align-items:center'>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+{% block extra_body %}
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{% endblock %}

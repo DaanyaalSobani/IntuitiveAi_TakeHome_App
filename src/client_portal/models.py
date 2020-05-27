@@ -25,7 +25,7 @@ class Trash(models.Model):
     )
     name = models.CharField(max_length=150)
     type = models.CharField(max_length=1, choices=TYPE_CHOICES)
-    organization = models.ManyToManyField(Organization)
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
