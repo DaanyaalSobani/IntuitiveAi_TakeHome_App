@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+
+    'client_portal',
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -131,3 +134,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "shared/static"),
 ]
+
+LOGIN_REDIRECT_URL = "/"
