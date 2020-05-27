@@ -7,4 +7,4 @@ from .models import WasteManager
 
 class IndexView(LoginRequiredMixin, TemplateView):
     template_name = "client_portal/index.html"
-    pass
+
