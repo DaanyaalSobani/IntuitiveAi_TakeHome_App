@@ -8,6 +8,11 @@
   {% load static %}
   <link rel="stylesheet" href="{% static 'login/login.css' %}">
 {% endblock %}
+{% block extra_nav_items%}
+  <li class="nav-item">
+    <a class="nav-link"></a>
+  </li>
+{%endblock%}
 {% block content %}
   <div class="container d-flex flex-column">
     <div class="sign_in_message">
