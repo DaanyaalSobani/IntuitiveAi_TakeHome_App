@@ -4,6 +4,9 @@ function trash_list(list_container, list) {
 	).appendTo(list_container);
 	$('.list-group').sortable({
 		revert: true,
+		out: function (event, ui) {
+			console.log($(event.target).children());
+		},
 	});
 	$('ul, li').disableSelection();
 	list.forEach((item) => {

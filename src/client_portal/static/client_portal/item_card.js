@@ -9,7 +9,7 @@ function itemCard(selector, itemCount = 0, color = 'red') {
 		'text-align': 'center',
 		margin: 'auto',
 	});
-	$(selector).html(`<h5>${itemCount}<br>Items</h5>`);
+	$(selector).html(`<h5 id=>${itemCount}<br>Items</h5>`);
 }
 
 function get_trash(callback = console.log) {
