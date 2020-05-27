@@ -87,10 +87,14 @@
                 var preference = $(this).attr("id").replace("preference_box_","")
                 var id = 'trash_list_' +  preference
                 $(this).append($(`<div class='align-self-stretch d-flex flex-column' style='flex-grow:1' id='${id}'>`))
-                trash_list($(`#${id}`),state[preference])
+                trash_list($(`#${id}`),state[preference],preference)
             })
         }
         function update_trash_state_server(trash) {
+            state['Recyclables'].length = 0
+            state['Landfill'].length = 0
+            state['Paper'].length = 0
+            state['Compost'].length = 0
             trash.forEach(e => {
                 switch(e.type){
                     case "R":
@@ -107,7 +111,11 @@
                     break
                 }
             })
-            
+            trash_state_updated()
+        }
+
+        function trash_state_updated(){
+            updateItemCounts(state)
         }
     </script>
 {% endblock %}

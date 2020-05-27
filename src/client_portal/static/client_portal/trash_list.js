@@ -1,11 +1,14 @@
-function trash_list(list_container, list) {
+function trash_list(list_container, list, preference) {
 	var list_group = $(
-		`<ul class="trash-group list-group align-self-stretch" style='flex-grow:1'></ul>`
+		`<ul id='trash_group_${preference}' class="trash-group list-group align-self-stretch" style='flex-grow:1'></ul>`
 	).appendTo(list_container);
-	$('.list-group').sortable({
+	$('.trash-group').sortable({
 		revert: true,
 		out: function (event, ui) {
-			console.log($(event.target).children());
+			update_trash_state_client();
+		},
+		over: function (event, ui) {
+			update_trash_state_client();
 		},
 	});
 	$('ul, li').disableSelection();
@@ -38,8 +41,16 @@ function trash_list(list_container, list) {
 	});
 }
 
-function update_trash_state_client(state) {
-	$('.trash-group').each((i, elem) => {
-		console.log($(elem));
+function update_trash_state_client() {
+	$('.trash-group').each((i, parent) => {
+		var preference = $(parent).attr('id').replace('trash_group_', '');
+		state[preference].length = 0;
+		$(parent)
+			.children()
+			.each((i, child) => {
+				data = $(child).data()?.trash_data;
+				if (data) state[preference].push(data);
+			});
 	});
+	trash_state_updated();
 }

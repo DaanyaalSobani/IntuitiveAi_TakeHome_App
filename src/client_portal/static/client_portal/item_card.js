@@ -9,7 +9,9 @@ function itemCard(selector, itemCount = 0, color = 'red') {
 		'text-align': 'center',
 		margin: 'auto',
 	});
-	$(selector).html(`<h5 id=>${itemCount}<br>Items</h5>`);
+	$(selector).html(
+		`<h5><span class='item_counter'>${itemCount}</span><br>Items</h5>`
+	);
 }
 
 function get_trash(callback = console.log) {
@@ -19,4 +21,9 @@ function get_trash(callback = console.log) {
 	});
 }
 
-function updateItemCounts(state) {}
+function updateItemCounts(state) {
+	$('.preference_box').each(function () {
+		var preference = $(this).attr('id').replace('preference_box_', '');
+		$(this).find('.item_counter').text(state[preference].length);
+	});
+}
