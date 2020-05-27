@@ -5,5 +5,6 @@ from . import apis
 
 urlpatterns = [
     path('', views.IndexView.as_view()),
-    path('api/wastemanager', apis.wastemanager)
+    path('api/wastemanager', apis.wastemanager_info),
+    path('api/trash', apis.trash_info)
 ]

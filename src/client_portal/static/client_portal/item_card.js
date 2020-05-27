@@ -1,6 +1,6 @@
 function itemCard(selector,itemCount = 0, color = "red"){
     $(selector).css({
-        "width": "100%",
+        "width": "140px",
         "height": "140px",
         "border-radius":"50%",
         "border": `solid 4px ${color}`,
@@ -9,4 +9,11 @@ function itemCard(selector,itemCount = 0, color = "red"){
         "text-align": "center"
     })
     $(selector).html(`${itemCount}<br>Items`)
+}
+
+function get_trash(callback = console.log){
+    $.ajax({
+        url: "api/trash",
+        success: callback
+    })
 }

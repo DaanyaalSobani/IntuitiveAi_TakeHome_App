@@ -3,12 +3,18 @@ from django.contrib.auth.decorators import login_required
 
 
 @login_required
-def wastemanager(request):
-    print(dir(request.user.wastemanager))
+def wastemanager_info(request):
+    wastemanager = request.user.wastemanager
     data = {
-        'name': 'Vitor',
-        'location': 'Finland',
-        'is_active': True,
-        'count': 28
+        'name': wastemanager.user.first_name,
+        'organization': wastemanager.organization.name
+    }
+    return JsonResponse(data)
+
+@login_required
+def trash_info(request):
+    organization = request.user.wastemanager.organization
+    data = {
+        'trash': list(organization.trash_set.values())
     }
     return JsonResponse(data)

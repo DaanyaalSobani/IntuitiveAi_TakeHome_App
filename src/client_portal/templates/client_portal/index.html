@@ -30,8 +30,14 @@
 {% block extra_body %}
     <script src="{% static 'client_portal/item_card.js'%}"></script>
     <script>
+        state = {
+            Recyclable_count: 0,
+            Paper_count: 0,
+            Landfill_count: 0,
+            Compost_count: 0,
+        }
         preferences = [{
-                            name: "Recyclables",
+                            name: "Recyclable",
                             color: "red"
                         },
                         {
@@ -46,13 +52,33 @@
                             name: "Compost",
                             color: "green"
                         }]
-        preferences.forEach(elem => {
-            id = "preference_box_" + elem.name
-            $("#system-preferences").children(".card-body").append(`
-                <div class='col-3' id='${id}'></div>
-            `).css("text-align","center")
-            itemCard($("<div></div>").appendTo(`#${id}`),10,elem.color)
-            $(`#${id}`).append(`<h5>${elem.name}</h5>`)
+        get_trash((res) =>{
+            update_trash_state(res.trash)
+            preferences.forEach(elem => {
+                id = "preference_box_" + elem.name
+                $("#system-preferences").children(".card-body").append(`
+                    <div class='col-3' id='${id}'></div>
+                `).css("text-align","center")
+                itemCard($("<div></div>").appendTo(`#${id}`),state[`${elem.name}_count`],elem.color)
+                $(`#${id}`).append(`<h5>${elem.name}</h5>`)
+            })
         })
+
+        function update_trash_state(trash) {
+            counter = {}
+            trash.forEach(e => {
+                if(!counter.hasOwnProperty(e.type)){
+                    counter[e.type] = 1
+                }else{
+                    counter[e.type] =  counter[e.type] + 1
+                }
+            })
+            state['Recyclable_count'] = counter['R'] || 0
+            state['Landfill_count'] = counter['L'] || 0
+            state['Paper_count'] = counter['P'] || 0
+            state['Compost_count'] = counter['C'] || 0
+        }
+
+
     </script>
 {% endblock %}
